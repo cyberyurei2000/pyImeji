@@ -1,0 +1,5 @@
+filter: "highpass"
+imagePath: "./samples/girl.jpg"
+showHistogram: true
+showOriginal: true
+save: false
