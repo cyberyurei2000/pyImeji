@@ -12,7 +12,7 @@ def histogram(image1, image2, title, original):
     """Show image histogram"""
     if original:
         image1_gry = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
-        histr1 = cv2.calcHist([image1_gry], [0], None, [256], [0,256])
+        histr1 = cv2.calcHist([image1_gry], [0], None, [256], [0, 256])
         plt.subplot(121)
         plt.plot(histr1)
         plt.title("Original Histogram")
@@ -20,7 +20,7 @@ def histogram(image1, image2, title, original):
         plt.subplot(122)
 
     image2_gry = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
-    histr2 = cv2.calcHist([image2_gry], [0], None, [256], [0,256])
+    histr2 = cv2.calcHist([image2_gry], [0], None, [256], [0, 256])
     plt.plot(histr2)
     plt.title(f"{title} Histogram")
     plt.show()
