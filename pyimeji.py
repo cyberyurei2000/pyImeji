@@ -4,12 +4,12 @@ import yaml
 import numpy as np
 import matplotlib as mpl
 from matplotlib import pyplot as plt
-from cv2 import typing
+from cv2.typing import MatLike
 
 mpl.rcParams['toolbar'] = "None"
 
 
-def histogram(image1: typing.MatLike, image2: typing.MatLike, title: str, original: bool) -> None:
+def histogram(image1: MatLike, image2: MatLike, title: str, original: bool) -> None:
     """Show image histogram"""
     if original:
         image1_gry = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
@@ -27,14 +27,13 @@ def histogram(image1: typing.MatLike, image2: typing.MatLike, title: str, origin
     plt.show()
 
 
-def save_image(image: typing.MatLike, path: str) -> None:
+def save_image(image: MatLike, path: str) -> None:
     """Save image with filter applied"""
     file_name, file_ext = os.path.splitext(path)
     cv2.imwrite(f"output{file_ext}", image)
 
 
-def show(image1: typing.MatLike, image2: typing.MatLike, title: str,
-         histr: bool, original: bool) -> None:
+def show(image1: MatLike, image2: MatLike, title: str, histr: bool, original: bool) -> None:
     """Show image"""
     if original:
         plt.subplot(121)
