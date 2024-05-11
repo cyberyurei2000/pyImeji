@@ -4,11 +4,12 @@ import yaml
 import numpy as np
 import matplotlib as mpl
 from matplotlib import pyplot as plt
+from cv2 import typing
 
 mpl.rcParams['toolbar'] = "None"
 
 
-def histogram(image1, image2, title, original):
+def histogram(image1: typing.MatLike, image2: typing.MatLike, title: str, original: bool) -> None:
     """Show image histogram"""
     if original:
         image1_gry = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
@@ -26,13 +27,14 @@ def histogram(image1, image2, title, original):
     plt.show()
 
 
-def save_image(image, path):
+def save_image(image: typing.MatLike, path: str) -> None:
     """Save image with filter applied"""
     file_name, file_ext = os.path.splitext(path)
     cv2.imwrite(f"output{file_ext}", image)
 
 
-def show(image1, image2, title, histr, original):
+def show(image1: typing.MatLike, image2: typing.MatLike, title: str,
+         histr: bool, original: bool) -> None:
     """Show image"""
     if original:
         plt.subplot(121)
@@ -49,7 +51,7 @@ def show(image1, image2, title, histr, original):
         histogram(image1, image2, title, original)
 
 
-def low_pass(path, histr, original, save):
+def low_pass(path: str, histr: bool, original: bool, save: bool) -> None:
     """Apply Low-pass filter to the image"""
     image = cv2.imread(path)
     gblur_image = cv2.GaussianBlur(image, (5, 5), 0)
@@ -58,7 +60,7 @@ def low_pass(path, histr, original, save):
     show(image, gblur_image, "Low-pass", histr, original)
 
 
-def high_pass(path, histr, original, save):
+def high_pass(path: str, histr: bool, original: bool, save: bool) -> None:
     "Apply High-pass filter to the image"
     image = cv2.imread(path)
 
@@ -69,7 +71,7 @@ def high_pass(path, histr, original, save):
     show(image, sharpen_image, "High-pass", histr, original)
 
 
-def median(path, histr, original, save):
+def median(path: str, histr: bool, original: bool, save: bool) -> None:
     """Apply Median filter to the image"""
     image = cv2.imread(path)
     median_image = cv2.medianBlur(image, 5)
