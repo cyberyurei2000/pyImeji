@@ -1,3 +1,7 @@
+# Copyright (c) cyberyurei2000 2022
+# Released under the BSD 3-Clause License
+# https://opensource.org/license/bsd-3-clause
+
 import os
 import cv2
 import yaml
