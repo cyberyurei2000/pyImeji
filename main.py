@@ -83,21 +83,26 @@ def median(path: str, histr: bool, original: bool, save: bool) -> None:
     show(image, median_image, "Median", histr, original)
 
 
-with open("./config.yml", "r") as stream:
-    try:
-        config = yaml.safe_load(stream)
-        filter = config["filter"]
-        path = config["imagePath"]
-        show_histr = config["showHistogram"]
-        original = config["showOriginal"]
-        save = config["save"]
+def main():
+    with open("./config.yml", "r") as stream:
+        try:
+            config = yaml.safe_load(stream)
+            filter = config["filter"]
+            path = config["imagePath"]
+            show_histr = config["showHistogram"]
+            original = config["showOriginal"]
+            save = config["save"]
 
-        match filter:
-            case "lowpass":
-                low_pass(path, show_histr, original, save)
-            case "highpass":
-                high_pass(path, show_histr, original, save)
-            case "median":
-                median(path, show_histr, original, save)
-    except yaml.YAMLError as err:
-        print(err)
+            match filter:
+                case "lowpass":
+                    low_pass(path, show_histr, original, save)
+                case "highpass":
+                    high_pass(path, show_histr, original, save)
+                case "median":
+                    median(path, show_histr, original, save)
+        except yaml.YAMLError as err:
+            print(err)
+
+
+if __name__ == "__main__":
+    main()
